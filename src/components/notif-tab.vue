@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 
 defineProps({
   postee: String,
@@ -12,9 +10,6 @@ defineProps({
   someProp:Object,
   img:String
 })
-
-const count = ref(0)
-
 
 </script>
 
@@ -34,7 +29,7 @@ const count = ref(0)
 <span class="times" > {{timeSent }} </span>
 </div>
 
-<img v-if="img" :src="img" alt="chess Image" class="chess" />
+<img v-if="img" :src="img" alt="chess Image" class="chess"/>
 </div>
 <component :is="someProp"> </component>
 
