@@ -7,29 +7,33 @@ defineProps({
   event:String,
   src: String,
   timeSent:String,
-  myComponent:Object,
+  read:Boolean,
+  someProp:Object,
 })
 
 const count = ref(0)
+
+
+
 </script>
 
 <template>
-
-  <div class="card">
+<div class="wrapper">
+  <div class="card" :style="{ backgroundColor: read ? 'white' : 'hsl(211, 68%, 94%)' }">
    <div>
       <img :src="src" alt="profile-img" class="prof-pic" />
       </div>
    <div class='notif-info'>
       <div class="body">
          <div >
-      <strong>{{postee}}</strong> <span class="action" >{{ action }}  </span> <span> {{event }}</span>
+      <strong>{{postee}}</strong> <span class="action" >{{ action }}  </span> <span  :style="{color:event === 'Chess Club'?'hsl(219, 85%, 26%)':'hsl(219, 12%, 42%)', fontWeight:600 }" > {{event }}</span>
 </div>
-<p class="c-red"> </p>
+<p class="c-red" v-if="!read" > </p>
 </div>
 <span class="times" > {{timeSent }} </span>
-{{myComponent}}
 </div>
-
+</div>
+<component :is="someProp"> </component>
 
   </div>
 
@@ -37,12 +41,10 @@ const count = ref(0)
 
 <style scoped>
 .card{
-   background:hsl(211, 68%, 94%);
-   height: 10vh;
+   height: fit-content;
    border-radius: .5em;
    display: flex;
-   align-items: center;
-   padding: .3em .5em;
+   padding: .8em .8em .3em .8em;
    gap: 1em;
 }
 .body{
@@ -50,8 +52,8 @@ const count = ref(0)
    align-items: center;
 }
 .c-red{
-   width: 10px;
-  height: 10px;
+   min-width: 10px;
+  min-height: 10px;
   border-radius: 50%;
   margin: 0 .5em;
   background-color: red;

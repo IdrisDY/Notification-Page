@@ -7,3 +7,15 @@
 <script setup>
 
 </script>
+
+<style scoped>
+p{
+  font-size: 1rem;
+  border: 1px solid hsl(219, 14%, 70%);
+  width: 83%;
+  margin-left: auto;
+  padding: 1em;
+  border-radius: .3em;
+  color: hsl(219, 21%, 35%);
+}
+</style>
