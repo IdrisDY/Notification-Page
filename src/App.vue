@@ -117,6 +117,7 @@ export default {
   width: 60%;
   margin: auto;
   padding: 2em 1.5em;
+  border-radius: 1em;
   background: white;
 }
 @media(max-width:768px) {
