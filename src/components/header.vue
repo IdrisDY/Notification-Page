@@ -4,7 +4,7 @@
          <h1>Notifications</h1>
          <span> {{ count }} </span>
       </div>
-      <button> Mark all as read </button>
+      <button @click= '$emit("markRead")' > Mark all as read </button>
    </div>
 </template>
 
@@ -26,6 +26,9 @@ button{
    cursor: pointer;
    font-size: 1rem;
 }
+button:hover{
+   color: hsl(219, 85%, 26%) ;
+}
 h1{
    font-size: 1.4rem;
    margin: 0;
@@ -43,5 +46,13 @@ h1{
    width: 18px;
    text-align: center;
    height: 100%;
+}
+@media(max-width:768px){
+   h1{
+   font-size: 1rem;
+}
+.notif{
+   gap: .5em;
+}
 }
 </style>

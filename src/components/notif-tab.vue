@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+
 defineProps({
   postee: String,
   action:String,
@@ -9,10 +10,10 @@ defineProps({
   timeSent:String,
   read:Boolean,
   someProp:Object,
+  img:String
 })
 
 const count = ref(0)
-
 
 
 </script>
@@ -26,12 +27,14 @@ const count = ref(0)
    <div class='notif-info'>
       <div class="body">
          <div >
-      <strong>{{postee}}</strong> <span class="action" >{{ action }}  </span> <span  :style="{color:event === 'Chess Club'?'hsl(219, 85%, 26%)':'hsl(219, 12%, 42%)', fontWeight:600 }" > {{event }}</span>
+      <strong>{{postee}}</strong> <span class="action" >{{ action }}  </span> <span class="event"  :style="{color:event === 'Chess Club'?'hsl(219, 85%, 26%)':'hsl(219, 12%, 42%)', fontWeight:600 }" > {{event }}</span>
 </div>
 <p class="c-red" v-if="!read" > </p>
 </div>
 <span class="times" > {{timeSent }} </span>
 </div>
+
+<img v-if="img" :src="img" alt="chess Image" class="chess" />
 </div>
 <component :is="someProp"> </component>
 
@@ -62,6 +65,10 @@ text-align: center;
 .prof-pic{
    height: 30px;
 }
+strong:hover, span.event:hover{
+color:  hsl(219, 85%, 26%);
+cursor: pointer;
+}
 .notif-info{
    display: flex;
    flex-direction: column;
@@ -73,5 +80,16 @@ text-align: center;
 .action{
    color: hsl(219, 21%, 35%);
    font-weight: 500;
+}
+.chess{
+   margin-left: auto;
+   scale: .8;
+}
+@media(max-width:768px){
+   .chess{
+      scale: 1;
+      width: 50px;
+      height: 50px;
+   }
 }
 </style>

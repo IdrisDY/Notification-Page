@@ -10,6 +10,7 @@ import image6 from "./assets/assets/images/avatar-nathan-peterson.webp";
 import image7 from "./assets/assets/images/avatar-anna-kim.webp";
 import AddedText from "./components/AddedText.vue";
 import headerVue from "./components/header.vue";
+import chessImg from './assets/assets/images/image-chess.webp'
 export default {
   components: {
     HelloWorld,
@@ -19,7 +20,7 @@ export default {
   },
   data() {
     const marked = false
-    const notifs = 0
+    const notifs = 3
     return {
       image1,
       image2,
@@ -30,12 +31,16 @@ export default {
       image7,
       AddedText,
       marked,
-      notifs
+      notifs,
+      chessImg
     };
   },
   methods:{
-    updateNotifs(){
-      console.log(this.notifs);
+    markRead(){
+      setTimeout(() => {
+        this.notifs = 0;
+    this.marked = true
+      }, 200);
     }
   }
 };
@@ -43,7 +48,7 @@ export default {
 
 <template>
   <div class="card-container">
-    <header-vue :count= 3 />
+    <header-vue :count= 'notifs' @markRead = 'markRead' />
     <NotifTab
       postee="Mark Webber"
       action="reacted to your recent post"
@@ -82,6 +87,7 @@ export default {
       :read="true"
       :src="image5"
       timeSent="1 week ago"
+      :img="chessImg"
     />
     <NotifTab
       postee="Nathan Peterson"
@@ -94,7 +100,7 @@ export default {
     <NotifTab
       postee="Anna Kim"
       action="left the group"
-      event="Chess Club"
+      event="Chess Club."
       :read="true"
       :src="image7"
       timeSent="2 weeks ago"
@@ -113,8 +119,11 @@ export default {
   padding: 2em 1.5em;
   background: white;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+@media(max-width:768px) {
+.card-container{
+  width: 90%;
+  padding: 1em;
+}
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
