@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="card-container">
+  <main class="card-container">
     <header-vue :count= 'notifs' @markRead = 'markRead' />
     <NotifTab
       postee="Mark Webber"
@@ -106,7 +106,7 @@ export default {
       timeSent="2 weeks ago"
     />
 
-  </div>
+  </main>
 </template>
 
 <style scoped>
